@@ -1,6 +1,6 @@
-package family_free.family.buider.human.Sort;
+package family_free.family.human.Sort;
 
-import family_free.family.buider.human.Human;
+import family_free.family.human.Human;
 
 import java.util.Comparator;
 

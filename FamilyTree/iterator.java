@@ -1,6 +1,6 @@
-package family_free.family.buider.FamilyTree;
+package family_free.family.FamilyTree;
 
-import family_free.family.buider.human.Human;
+import family_free.family.human.Human;
 
 import java.util.Iterator;
 import java.util.List;
