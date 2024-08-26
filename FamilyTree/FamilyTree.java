@@ -1,32 +1,35 @@
 package family_free.family.FamilyTree;
 
+import HW_3.FamilyTree.TreeNode;
+import HW_3.human.Human;
 import family_free.family.human.Sort.ComparatorByAge;
 import family_free.family.human.Sort.ComparatorByName;
-import family_free.family.human.Human;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree {
+public class FamilyTree<E extends TreeNode<E>> implements Serializable, Iterable<E> {
     //переменая для генирации индентификаторов
     private long humansId;
     //список людей
-    private List<Human> humanList;
+    private List<E> humanList;
 
     public FamilyTree(){
         this(new ArrayList<>());
     }
 
-    public FamilyTree(List<Human> humanList){
+    public FamilyTree(List<E> humanList){
         //обычный сеттер принимает лист и записывает его
         this.humanList = humanList;
     }
 
-    public void addHumanNew(Human human){
+    public void addHumanNew(E human){
         humanList.add(human);
     }
 
-    public boolean addHuman(Human human){
+    public boolean addHuman(E human){
         //если передили пустую ссылку, то эту ссылку мы не добавляем в дерево
         if (human ==null){
             return false;
@@ -35,7 +38,7 @@ public class FamilyTree {
             humanList.add(human);
             human.setId((int) humansId++);
 
-            addToParants(human);
+            addToParants((Human) human);
         }
         return false;
     }
@@ -52,18 +55,18 @@ public class FamilyTree {
         }
     }
 
-    public List<Human> getByName(String name){
-        List<Human> res = new ArrayList<>();
-        for (Human human: humanList){
+    public List<E> getByName(String name){
+        List<E> res = new ArrayList<>();
+        for (E human: humanList){
             if(human.getName()==name){
-                res.add(human);
+                res.add((E) human);
             }
         }
         return res;
     }
 
-    public Human getById(long id){
-        for(Human human:humanList){
+    public E getById(long id){
+        for(E human:humanList){
             if(human.getId()==id){
                 return human;
             }
@@ -71,14 +74,11 @@ public class FamilyTree {
         return null;
     }
 
-
-
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Дерево:\n");
-        for (Human human : humanList) {
+        for (E human : humanList) {
             stringBuilder.append(human);
             stringBuilder.append("\n");
         }
@@ -91,6 +91,11 @@ public class FamilyTree {
 
     public void sortByAge() {
         humanList.sort(new ComparatorByAge());
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
     }
 }
 

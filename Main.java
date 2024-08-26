@@ -1,8 +1,8 @@
-package family_free.family;
+package HW_3;
 
+import HW_3.human.Gender;
+import HW_3.human.Human;
 import family_free.family.FamilyTree.FamilyTree;
-import family_free.family.human.Gender;
-import family_free.family.human.Human;
 
 import java.time.LocalDate;
 
@@ -27,6 +27,8 @@ public class Main {
         System.out.println(familyTree);
         familyTree.sortByName();
         System.out.println(familyTree);
+
+        System.out.println("fhjffg");
     }
 }
 

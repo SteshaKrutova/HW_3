@@ -1,4 +1,6 @@
-package family_free.family.human;
+package HW_3.human;
+
+import HW_3.FamilyTree.TreeNode;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -6,7 +8,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable {
+public class Human implements Serializable, TreeNode<Human> {
     //My
     private static int idCounter = 0; // Статический счетчик id, общий для всех объектов класса
     private int id;
@@ -17,10 +19,6 @@ public class Human implements Serializable {
     private Human mother;
     private Human father;
     private List<Human> children;
-
-    public Human(){
-
-    }
 
 //My
     public Human(String name, Gender gender, LocalDate birthday, LocalDate deathDate, Human mother, Human father) {
@@ -88,6 +86,8 @@ public class Human implements Serializable {
 
     // сетеры и гетеры
     public String getName() { return name; }
+
+
     public void setName(String name) { this.name = name;}
     public Gender getGender() {return gender;}
     public void setGender(Gender gender) {this.gender = gender;}
@@ -97,7 +97,18 @@ public class Human implements Serializable {
     public Human getFather() {return father;}
     public void setChildren(List<Human> children) {this.children = children;}
     public List<Human> getChildren() {return children;}
-    public int getId() {return id;}
+
+    @Override
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    @Override
+    public void setId(long id) {
+
+    }
+
+    public long getId() {return id;}
     public void setId(int id) {this.id = id;}
 
     public void setBirthday(LocalDate birthday) {

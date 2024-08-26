@@ -1,12 +1,12 @@
 package family_free.family.human.Sort;
 
-import family_free.family.human.Human;
+import HW_3.FamilyTree.TreeNode;
 
 import java.util.Comparator;
 
-public class ComparatorByAge implements Comparator<Human> {
+public class ComparatorByAge<T extends TreeNode> implements Comparator<T>{
     @Override
-    public int compare(Human o1, Human o2) {
-        return Integer.compare(o1.getAge(), o2.getAge());
+    public int compare(T o1, T o2) {
+        return o1.getBirthday().compareTo(o2.getBirthday());
     }
 }
